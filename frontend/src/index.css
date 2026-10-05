@@ -1,0 +1,116 @@
+/* ============================================================
+   index.css — Global Base Styles
+   Imports Tailwind v4 + theme variables
+   Sets up typography, scrollbar, and refined base aesthetics
+   ============================================================ */
+
+/* Import Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Import all site colors/theme variables */
+@import "./theme/colors.css";
+
+/* Google Fonts — Inter for UI, plus Playfair Display for editorial headings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* ── Base body styles ────────────────────────────────── */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+}
+
+/* ── Smooth scroll ───────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Selection highlight ─────────────────────────────── */
+::selection {
+  background: #E8DFC9;
+  color: #0B0B0B;
+}
+
+/* ── Custom scrollbar ────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+::-webkit-scrollbar-thumb {
+  background: #302E2A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* ── Utility: editorial serif headings ───────────────── */
+.font-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ── Subtle noise texture overlay on main background ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* Ensure content sits above the texture overlay */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Subtle horizontal rule ──────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-default);
+  margin: 0;
+}
+
+/* ── Focus ring ──────────────────────────────────────── */
+:focus-visible {
+  outline: 1.5px solid var(--accent-secondary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Link base ───────────────────────────────────────── */
+a {
+  text-decoration: none;
+}
+
+/* ── Animate-in keyframes ────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease both;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+/* Stagger delays for cascaded fade-ups */
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.20s; }
+.delay-300 { animation-delay: 0.30s; }
+.delay-400 { animation-delay: 0.40s; }
+.delay-500 { animation-delay: 0.50s; }

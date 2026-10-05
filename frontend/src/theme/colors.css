@@ -1,0 +1,40 @@
+/* =============================================
+   PORTFOLIO THEME — colors.css
+   Sophisticated Black & Creamy-White Palette
+   High-end editorial aesthetic — no bright colors,
+   no neon, no gradients. Pure contrast and texture.
+   ============================================= */
+
+:root {
+  /* --- BACKGROUNDS --- */
+  --bg-main:       #0B0B0B;                /* Deep matte black — primary canvas    */
+  --bg-card:       #171717;                /* Soft black — cards & elevated areas  */
+  --bg-nav:        rgba(11, 11, 11, 0.90); /* Nav — nearly opaque black            */
+
+  /* --- TEXT --- */
+  --text-primary:   #F5F0E6;   /* Warm cream — main headings & body   */
+  --text-secondary: #BEB7A8;   /* Warm beige — muted / subtitle text  */
+  --text-on-accent: #0B0B0B;   /* Dark text placed on light accents   */
+
+  /* --- ACCENT --- */
+  --accent-primary:   #E8DFC9; /* Soft ivory — primary highlight      */
+  --accent-secondary: #BEB7A8; /* Warm beige — secondary accent       */
+  --accent-hover:     #F5F0E6; /* Full cream on hover                 */
+
+  /* --- BORDERS --- */
+  --border-default:  #302E2A;  /* Subtle charcoal — card/section dividers */
+  --border-accent:   #BEB7A8;  /* Beige border for hover/focus states     */
+
+  /* --- GRADIENTS (muted, nearly flat) --- */
+  --gradient-hero: linear-gradient(135deg, #171717 0%, #0B0B0B 100%);
+  --gradient-btn:  linear-gradient(90deg,  #E8DFC9, #D4C9AF);
+
+  /* --- SKILLS BADGE --- */
+  --badge-bg:    #1E1C18;   /* Very dark warm black                */
+  --badge-text:  #BEB7A8;   /* Beige text on dark badge            */
+
+  /* --- FORM INPUTS --- */
+  --input-bg:     #141412;  /* Deepest tone for inputs             */
+  --input-border: #302E2A;  /* Charcoal input border               */
+  --input-focus:  #BEB7A8;  /* Beige focus ring                    */
+}
