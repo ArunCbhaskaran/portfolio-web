@@ -1,87 +1,31 @@
-// ============================================================
-//  src/components/ProjectCard.jsx
-//  Displays a single project card.
-// ============================================================
-
 export default function ProjectCard({ project }) {
   const { title, description, image, technologies, githubUrl, liveUrl } = project;
 
   return (
-    <div
-      style={{
-        width: "320px",
-        borderRadius: "1rem",
-        overflow: "hidden",
-        border: "1px solid var(--border-default)",
-        backgroundColor: "var(--bg-card)",
-        transition: "transform 0.28s ease, border-color 0.28s ease",
-        cursor: "default",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-8px)";
-        e.currentTarget.style.borderColor = "var(--border-accent)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.borderColor = "var(--border-default)";
-      }}
-    >
-      {/* Image */}
+    <div className="w-80 rounded-2xl overflow-hidden border border-border-default bg-bg-card transition-all duration-300 hover:-translate-y-2 hover:border-border-accent cursor-default">
       {image ? (
         <img
           src={image}
           alt={title}
-          style={{ width: "100%", height: "180px", objectFit: "cover", display: "block", borderBottom: "1px solid var(--border-default)" }}
+          className="w-full h-44 object-cover block border-b border-border-default"
         />
       ) : (
-        <div
-          style={{
-            width: "100%",
-            height: "180px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "var(--bg-main)",
-            borderBottom: "1px solid var(--border-default)",
-            color: "var(--text-secondary)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            opacity: 0.5,
-          }}
-        >
+        <div className="w-full h-44 flex items-center justify-center bg-bg-main border-b border-border-default text-text-secondary text-xs tracking-[0.15em] uppercase opacity-50">
           No image yet
         </div>
       )}
 
-      {/* Body */}
-      <div style={{ padding: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+      <div className="p-5 flex flex-col gap-3">
+        <h3 className="text-base font-semibold text-text-primary">{title}</h3>
 
-        {/* Title */}
-        <h3 style={{ margin: 0, fontSize: "1rem", fontWeight: 600, color: "var(--text-primary)" }}>
-          {title}
-        </h3>
+        <p className="text-sm text-text-secondary leading-relaxed">{description}</p>
 
-        {/* Description */}
-        <p style={{ margin: 0, fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-          {description}
-        </p>
-
-        {/* Tech chips */}
         {technologies.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
+          <div className="flex flex-wrap gap-1.5">
             {technologies.map((tech) => (
               <span
                 key={tech}
-                style={{
-                  padding: "0.2rem 0.65rem",
-                  borderRadius: "999px",
-                  fontSize: "0.7rem",
-                  fontWeight: 500,
-                  border: "1px solid var(--border-default)",
-                  backgroundColor: "var(--badge-bg)",
-                  color: "var(--badge-text)",
-                }}
+                className="px-2.5 py-0.5 rounded-full text-[0.7rem] font-medium border border-border-default bg-badge-bg text-badge-text"
               >
                 {tech}
               </span>
@@ -89,25 +33,14 @@ export default function ProjectCard({ project }) {
           </div>
         )}
 
-        {/* Buttons */}
         {(githubUrl || liveUrl) && (
-          <div style={{ display: "flex", gap: "0.5rem", paddingTop: "0.75rem", borderTop: "1px solid var(--border-default)" }}>
+          <div className="flex gap-2 pt-3 border-t border-border-default">
             {githubUrl && (
               <a
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  flex: 1,
-                  padding: "0.4rem 0",
-                  borderRadius: "999px",
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
-                  textAlign: "center",
-                  textDecoration: "none",
-                  border: "1px solid var(--border-accent)",
-                  color: "var(--text-secondary)",
-                }}
+                className="flex-1 py-1.5 rounded-full text-xs font-medium text-center border border-border-accent text-text-secondary transition-colors duration-200 hover:text-text-primary"
               >
                 GitHub
               </a>
@@ -117,25 +50,13 @@ export default function ProjectCard({ project }) {
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  flex: 1,
-                  padding: "0.4rem 0",
-                  borderRadius: "999px",
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
-                  textAlign: "center",
-                  textDecoration: "none",
-                  backgroundColor: "var(--accent-primary)",
-                  color: "var(--text-on-accent)",
-                  border: "1px solid var(--accent-primary)",
-                }}
+                className="flex-1 py-1.5 rounded-full text-xs font-semibold text-center bg-accent-primary text-text-on-accent border border-accent-primary transition-all duration-200 hover:-translate-y-0.5"
               >
                 Live Demo
               </a>
             )}
           </div>
         )}
-
       </div>
     </div>
   );

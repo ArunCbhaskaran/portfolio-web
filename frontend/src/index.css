@@ -1,61 +1,74 @@
-/* ============================================================
-   index.css — Global Base Styles
-   Imports Tailwind v4 + theme variables
-   Sets up typography, scrollbar, and refined base aesthetics
-   ============================================================ */
-
-/* Import Tailwind CSS v4 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
-/* Import all site colors/theme variables */
-@import "./theme/colors.css";
+@theme {
+  --color-bg-main:          #0B0B0B;
+  --color-bg-card:          #171717;
+  --color-bg-nav:           rgba(11, 11, 11, 0.90);
+  --color-text-primary:     #F5F0E6;
+  --color-text-secondary:   #BEB7A8;
+  --color-text-on-accent:   #0B0B0B;
+  --color-accent-primary:   #E8DFC9;
+  --color-accent-secondary: #BEB7A8;
+  --color-accent-hover:     #F5F0E6;
+  --color-border-default:   #302E2A;
+  --color-border-accent:    #BEB7A8;
+  --color-badge-bg:         #1E1C18;
+  --color-badge-text:       #BEB7A8;
+  --color-input-bg:         #141412;
+  --color-input-border:     #302E2A;
+  --color-input-focus:      #BEB7A8;
+  --color-error:            #a85252;
+  --color-success:          #7BAF7B;
 
-/* Google Fonts — Inter for UI, plus Playfair Display for editorial headings */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+  --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+  --font-editorial: 'Playfair Display', Georgia, serif;
+}
 
-/* ── Base body styles ────────────────────────────────── */
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: theme(--color-bg-main);
+  color: theme(--color-text-primary);
+  font-family: theme(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0.01em;
 }
 
-/* ── Smooth scroll ───────────────────────────────────── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ── Selection highlight ─────────────────────────────── */
+/* ── Selection ── */
 ::selection {
   background: #E8DFC9;
   color: #0B0B0B;
 }
 
-/* ── Custom scrollbar ────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-card);
-}
-::-webkit-scrollbar-thumb {
-  background: #302E2A;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-secondary);
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: #171717; }
+::-webkit-scrollbar-thumb  { background: #302E2A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #BEB7A8; }
+
+/* ── Links ── */
+a { text-decoration: none; }
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 1.5px solid #BEB7A8;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* ── Utility: editorial serif headings ───────────────── */
-.font-editorial {
-  font-family: 'Playfair Display', Georgia, serif;
+/* ── HR ── */
+hr {
+  border: none;
+  border-top: 1px solid #302E2A;
+  margin: 0;
 }
 
-/* ── Subtle noise texture overlay on main background ─── */
+/* ── Noise overlay ── */
 body::before {
   content: '';
   position: fixed;
@@ -66,49 +79,24 @@ body::before {
   opacity: 0.4;
 }
 
-/* Ensure content sits above the texture overlay */
 #root {
   position: relative;
   z-index: 1;
 }
 
-/* ── Subtle horizontal rule ──────────────────────────── */
-hr {
-  border: none;
-  border-top: 1px solid var(--border-default);
-  margin: 0;
-}
-
-/* ── Focus ring ──────────────────────────────────────── */
-:focus-visible {
-  outline: 1.5px solid var(--accent-secondary);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ── Link base ───────────────────────────────────────── */
-a {
-  text-decoration: none;
-}
-
-/* ── Animate-in keyframes ────────────────────────────── */
+/* ── Animations ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-.animate-fade-up {
-  animation: fadeUp 0.6s ease both;
-}
-.animate-fade-in {
-  animation: fadeIn 0.5s ease both;
-}
+.animate-fade-up { animation: fadeUp 0.6s ease both; }
+.animate-fade-in { animation: fadeIn 0.5s ease both; }
 
-/* Stagger delays for cascaded fade-ups */
 .delay-100 { animation-delay: 0.10s; }
 .delay-200 { animation-delay: 0.20s; }
 .delay-300 { animation-delay: 0.30s; }
