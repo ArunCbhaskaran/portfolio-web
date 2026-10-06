@@ -120,7 +120,7 @@ export default function Home() {
                 <p><span style={{ color: "#BEB7A8" }}>name:</span> <span style={{ color: "#E8C87A" }}>"Arun CB"</span>,</p>
                 <p><span style={{ color: "#BEB7A8" }}>role:</span> <span style={{ color: "#E8C87A" }}>"Full-Stack Developer"</span>,</p>
                 <p><span style={{ color: "#BEB7A8" }}>based:</span> <span style={{ color: "#E8C87A" }}>"India 🇮🇳"</span>,</p>
-                <p><span style={{ color: "#BEB7A8" }}>exp:</span> <span style={{ color: "#a88de8" }}>"1+ yr"</span>,</p>
+                <p><span style={{ color: "#BEB7A8" }}>exp:</span> <span style={{ color: "#a88de8" }}>"1+ year"</span>,</p>
                 <p><span style={{ color: "#BEB7A8" }}>projects:</span> <span style={{ color: "#a88de8" }}>6</span>,</p>
                 <p><span style={{ color: "#BEB7A8" }}>openTo:</span> <span style={{ color: "#7BAF7B" }}>true</span>,</p>
               </div>
@@ -145,41 +145,6 @@ export default function Home() {
                 />
               </p>
             </div>
-          </div>
-
-          {/* Tech pills */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {["React", "Node.js", "TypeScript", "MongoDB", "Figma", "Docker"].map((tech, i) => (
-              <span
-                key={tech}
-                style={{
-                  padding: "5px 14px",
-                  borderRadius: 999,
-                  fontSize: 11,
-                  fontWeight: 500,
-                  border: "1px solid #302E2A",
-                  background: "#1E1C18",
-                  color: "#BEB7A8",
-                  letterSpacing: "0.04em",
-                  transition: "all 0.2s",
-                  cursor: "default",
-                  animationDelay: `${i * 0.06 + 0.55}s`,
-                }}
-                className="animate-fade-up hover:-translate-y-0.5"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#2a2820";
-                  e.currentTarget.style.borderColor = "#BEB7A8";
-                  e.currentTarget.style.color = "#F5F0E6";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#1E1C18";
-                  e.currentTarget.style.borderColor = "#302E2A";
-                  e.currentTarget.style.color = "#BEB7A8";
-                }}
-              >
-                {tech}
-              </span>
-            ))}
           </div>
         </div>
 
