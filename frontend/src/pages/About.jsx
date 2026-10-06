@@ -6,8 +6,8 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="px-6 py-24 md:py-32 bg-bg-main border-t border-border-default">
-      <div className="mx-auto max-w-6xl flex flex-col gap-20">
+    <section id="about" className="px-6 py-20 md:py-28 bg-bg-main border-t border-border-default">
+      <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Page header */}
         <div className="animate-fade-up flex flex-col gap-3 border-b border-border-default pb-10">
@@ -24,10 +24,10 @@ export default function About() {
         </div>
 
         {/* Two-column: profile + bio */}
-        <div className="animate-fade-up delay-100 flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
+        <div className="animate-fade-up delay-100 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
           {/* Profile column */}
-          <div className="flex flex-col gap-5 lg:w-72 flex-shrink-0">
+          <div className="flex flex-col gap-5 lg:w-64 flex-shrink-0">
             <div className="w-full aspect-square rounded-2xl flex flex-col items-center justify-center gap-3 border border-border-default bg-bg-card text-text-secondary">
               <span className="text-5xl">🧑‍💻</span>
               <span className="text-sm text-text-secondary">Photo coming soon</span>

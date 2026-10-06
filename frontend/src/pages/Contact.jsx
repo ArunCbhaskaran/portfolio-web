@@ -66,8 +66,8 @@ export default function Contact() {
   );
 
   return (
-    <section id="contact" className="px-6 pt-24 pb-32 md:pt-32 bg-bg-main border-t border-border-default">
-      <div className="mx-auto max-w-6xl flex flex-col gap-16">
+    <section id="contact" className="px-6 py-20 md:py-28 bg-bg-main border-t border-border-default">
+      <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Page header */}
         <div className="animate-fade-up flex flex-col gap-3 border-b border-border-default pb-10">
@@ -87,7 +87,7 @@ export default function Contact() {
         </div>
 
         {/* Body */}
-        <div className="animate-fade-up delay-100 flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
+        <div className="animate-fade-up delay-100 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
           {/* Sidebar */}
           <aside className="flex flex-col gap-10 lg:w-64 flex-shrink-0">

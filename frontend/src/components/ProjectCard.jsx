@@ -2,7 +2,7 @@ export default function ProjectCard({ project }) {
   const { title, description, image, technologies, githubUrl, liveUrl } = project;
 
   return (
-    <div className="w-80 rounded-2xl overflow-hidden border border-border-default bg-bg-card transition-all duration-300 hover:-translate-y-2 hover:border-border-accent cursor-default">
+    <div className="w-full rounded-2xl overflow-hidden border border-border-default bg-bg-card transition-all duration-300 hover:-translate-y-2 hover:border-border-accent cursor-default">
       {image ? (
         <img
           src={image}

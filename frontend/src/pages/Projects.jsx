@@ -3,7 +3,7 @@ import ProjectCard from "../components/ProjectCard";
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-6 py-24 md:py-32 bg-bg-main border-t border-border-default">
+    <section id="projects" className="px-6 py-20 md:py-28 bg-bg-main border-t border-border-default">
       <div className="mx-auto max-w-6xl flex flex-col gap-16">
 
         {/* Header */}
@@ -20,7 +20,7 @@ export default function Projects() {
         </div>
 
         {/* Cards */}
-        <div className="animate-fade-up delay-100 flex flex-wrap gap-8">
+        <div className="animate-fade-up delay-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ProjectCard project={project} />
         </div>
 

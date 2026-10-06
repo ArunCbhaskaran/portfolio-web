@@ -12,7 +12,7 @@ export default function Home() {
       <div className="absolute left-[calc(50%-1px)] top-0 bottom-0 hidden lg:block pointer-events-none w-px bg-border-default" />
       <div className="absolute top-0 left-0 right-0 pointer-events-none h-px bg-border-default opacity-50" />
 
-      <div className="mx-auto max-w-6xl w-full py-28 md:py-36 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="mx-auto max-w-6xl w-full pt-8 pb-20 md:pt-10 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
         {/* Hero text */}
         <div className="flex flex-col gap-7">
@@ -59,9 +59,9 @@ export default function Home() {
 
           <div className="animate-fade-up delay-400 flex gap-7 mt-1">
             {[
-              { label: "GitHub",   url: "https://github.com/ArunCbhaskaran"},
+              { label: "GitHub",   url: "https://github.com/ArunCbhaskaran" },
               { label: "LinkedIn", url: "https://linkedin.com/in/aruncbhaskaran" },
-              { label: "Gmail",  url: "mailto:[aruncbhaskaran@gmail.com]"  },
+              { label: "Gmail",    url: "mailto:aruncbhaskaran@gmail.com" },
             ].map(({ label, url }) => (
               <a
                 key={label}
@@ -76,36 +76,106 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Identity card */}
-        <div className="animate-fade-up delay-300 hidden lg:flex flex-col gap-6">
-          <div className="rounded-2xl p-8 border border-border-default bg-bg-card flex flex-col gap-5">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl border border-border-default bg-bg-main">
-              🧑‍💻
-            </div>
-            <div className="flex flex-col gap-1">
-              <p className="text-xl font-semibold text-text-primary">Arun CB</p>
-              <p className="text-sm text-text-secondary">Full-Stack Developer · India</p>
-            </div>
-            <div className="h-px bg-border-default" />
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { num: "1+",   label: "Years exp." },
-                { num: "6+",  label: "Projects" },
+        {/* Identity card — terminal style */}
+        <div className="animate-fade-up delay-300 hidden lg:flex flex-col gap-4 justify-between">
 
-              ].map(({ num, label }) => (
-                <div key={label} className="flex flex-col gap-0.5">
-                  <span className="text-2xl font-bold text-text-primary">{num}</span>
-                  <span className="text-xs uppercase tracking-wider text-text-secondary">{label}</span>
-                </div>
-              ))}
+          {/* Terminal window */}
+          <div
+            style={{
+              background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+              border: "1px solid #302E2A",
+              borderRadius: "16px",
+              overflow: "hidden",
+              boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+            }}
+          >
+            {/* Window chrome */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "10px 14px",
+                borderBottom: "1px solid #302E2A",
+                background: "rgba(255,255,255,0.02)",
+              }}
+            >
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+              <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace" }}>~/arun-cb/portfolio</span>
+            </div>
+
+            {/* Terminal body */}
+            <div style={{ padding: "20px 22px 24px", fontFamily: "monospace", fontSize: 13, lineHeight: "1.85" }}>
+              <p style={{ color: "#5a564e" }}>{"# dev identity"}</p>
+
+              <p style={{ marginTop: 6 }}>
+                <span style={{ color: "#7BAF7B" }}>const</span>
+                <span style={{ color: "#E8DFC9" }}> developer</span>
+                <span style={{ color: "#BEB7A8" }}>{" = {"}</span>
+              </p>
+
+              <div style={{ paddingLeft: 20 }}>
+                <p><span style={{ color: "#BEB7A8" }}>name:</span> <span style={{ color: "#E8C87A" }}>"Arun CB"</span>,</p>
+                <p><span style={{ color: "#BEB7A8" }}>role:</span> <span style={{ color: "#E8C87A" }}>"Full-Stack Developer"</span>,</p>
+                <p><span style={{ color: "#BEB7A8" }}>based:</span> <span style={{ color: "#E8C87A" }}>"India 🇮🇳"</span>,</p>
+                <p><span style={{ color: "#BEB7A8" }}>exp:</span> <span style={{ color: "#a88de8" }}>"1+ yr"</span>,</p>
+                <p><span style={{ color: "#BEB7A8" }}>projects:</span> <span style={{ color: "#a88de8" }}>6</span>,</p>
+                <p><span style={{ color: "#BEB7A8" }}>openTo:</span> <span style={{ color: "#7BAF7B" }}>true</span>,</p>
+              </div>
+
+              <p style={{ color: "#BEB7A8" }}>{'};'}</p>
+
+              <p style={{ marginTop: 12, color: "#5a564e" }}># run</p>
+              <p>
+                <span style={{ color: "#7BAF7B" }}>$</span>
+                <span style={{ color: "#E8DFC9" }}> deploy</span>
+                <span style={{ color: "#BEB7A8" }}>(developer)</span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: 7,
+                    height: 14,
+                    background: "#E8DFC9",
+                    marginLeft: 4,
+                    verticalAlign: "middle",
+                    animation: "blink 1.1s step-end infinite",
+                  }}
+                />
+              </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {["React", "Node.js", "TypeScript", "MongoDB", "Figma", "Docker"].map((tech) => (
+          {/* Tech pills */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {["React", "Node.js", "TypeScript", "MongoDB", "Figma", "Docker"].map((tech, i) => (
               <span
                 key={tech}
-                className="px-3 py-1.5 rounded-full text-xs font-medium border border-border-default bg-badge-bg text-badge-text transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  padding: "5px 14px",
+                  borderRadius: 999,
+                  fontSize: 11,
+                  fontWeight: 500,
+                  border: "1px solid #302E2A",
+                  background: "#1E1C18",
+                  color: "#BEB7A8",
+                  letterSpacing: "0.04em",
+                  transition: "all 0.2s",
+                  cursor: "default",
+                  animationDelay: `${i * 0.06 + 0.55}s`,
+                }}
+                className="animate-fade-up hover:-translate-y-0.5"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#2a2820";
+                  e.currentTarget.style.borderColor = "#BEB7A8";
+                  e.currentTarget.style.color = "#F5F0E6";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "#1E1C18";
+                  e.currentTarget.style.borderColor = "#302E2A";
+                  e.currentTarget.style.color = "#BEB7A8";
+                }}
               >
                 {tech}
               </span>
