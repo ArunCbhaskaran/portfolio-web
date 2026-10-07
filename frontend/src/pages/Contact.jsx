@@ -4,6 +4,8 @@ export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const validate = {
     name:    (v) => v.trim().length < 2 ? "Name must be at least 2 characters." : "",
@@ -22,13 +24,37 @@ export default function Contact() {
     !validate.email(form.email) &&
     !validate.message(form.message);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setTouched({ name: true, email: true, message: true });
     if (!allValid) return;
-    setSubmitted(true);
-    setForm({ name: "", email: "", message: "" });
-    setTouched({});
+
+    setIsSubmitting(true);
+    setErrorMsg("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          gmail: form.email,
+          message: form.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setSubmitted(true);
+      setForm({ name: "", email: "", message: "" });
+      setTouched({});
+    } catch (err) {
+      setErrorMsg(err.message || "Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const borderColor = (field) => {
@@ -213,16 +239,20 @@ export default function Contact() {
                   <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/contact-form</span>
                 </div>
                 <div className="p-8 flex flex-col gap-6">
-                  <Field label="Name"    name="name" />
-                  <Field label="Email"   name="email" type="email" />
-                  <Field label="Message" name="message" as="textarea" rows={5} />
+                  {Field({ label: "Name", name: "name" })}
+                  {Field({ label: "Email", name: "email", type: "email" })}
+                  {Field({ label: "Message", name: "message", as: "textarea", rows: 5 })}
   
                   <div className="pt-6 border-t border-[#302E2A] mt-2">
+                    {errorMsg && (
+                      <p className="text-error text-sm font-medium mb-4">{errorMsg}</p>
+                    )}
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="px-8 py-3 rounded-full font-semibold text-sm border border-accent-primary bg-accent-primary text-text-on-accent transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed"
                     >
-                      Send Message →
+                      {isSubmitting ? "Sending..." : "Send Message →"}
                     </button>
                   </div>
                 </div>
