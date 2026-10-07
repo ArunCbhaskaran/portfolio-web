@@ -1,3 +1,5 @@
+import photo from "../assets/images/photo.jpeg";
+
 export default function About() {
   const skills = [
     "JavaScript", "TypeScript", "React", "Node.js",
@@ -27,99 +29,178 @@ export default function About() {
         <div className="animate-fade-up delay-100 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
           {/* Profile column */}
-          <div className="flex flex-col gap-5 lg:w-64 flex-shrink-0">
-            <div className="w-full aspect-square rounded-2xl flex flex-col items-center justify-center gap-3 border border-border-default bg-bg-card text-text-secondary">
-              <span className="text-5xl">🧑‍💻</span>
-              <span className="text-sm text-text-secondary">Photo coming soon</span>
-            </div>
-
-            <div className="rounded-xl border border-border-default bg-bg-card px-5 py-4 flex flex-col gap-4">
-              {[
-                { label: "Location",     value: "India" },
-                { label: "Availability", value: "Open to work" },
-                { label: "Focus",        value: "Full-Stack Dev" },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex justify-between items-center">
-                  <span className="text-xs uppercase tracking-widest font-medium text-text-secondary">
-                    {label}
-                  </span>
-                  <span className="text-sm font-medium text-text-primary">{value}</span>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="#"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-full border border-accent-primary bg-accent-primary text-text-on-accent text-sm font-semibold tracking-wide transition-all duration-200 hover:-translate-y-0.5"
+          <div
+            className="flex flex-col lg:w-72 xl:w-80 flex-shrink-0"
+            style={{
+              background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+              border: "1px solid #302E2A",
+              borderRadius: "16px",
+              overflow: "hidden",
+              boxShadow:
+                "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+            }}
+          >
+            {/* Window chrome */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "10px 14px",
+                borderBottom: "1px solid #302E2A",
+                background: "rgba(255,255,255,0.02)",
+              }}
             >
-              Download CV
-            </a>
-          </div>
-
-          {/* Bio & skills */}
-          <div className="flex flex-col gap-10 flex-1">
-
-            <div className="flex flex-col gap-5">
-              <h3 className="text-3xl font-semibold text-text-primary">Arun CB</h3>
-              <p className="text-base leading-[1.85] max-w-2xl text-text-secondary">
-                I'm a full-stack developer with a passion for building elegant,
-                performant web applications. I enjoy turning complex problems into
-                simple, intuitive interfaces that users genuinely love to use.
-              </p>
-              <p className="text-base leading-[1.85] max-w-2xl text-text-secondary">
-                With experience spanning the entire web stack — from crafting
-                responsive UIs to architecting scalable REST APIs — I bring
-                ideas to life from concept to deployment. I'm always learning,
-                always building, always improving.
-              </p>
+              <span
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  background: "#FF5F57",
+                  display: "inline-block",
+                }}
+              />
+              <span
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  background: "#FFBD2E",
+                  display: "inline-block",
+                }}
+              />
+              <span
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  background: "#28C840",
+                  display: "inline-block",
+                }}
+              />
             </div>
 
-            <div className="h-px bg-border-default" />
-
-            {/* Skills */}
-            <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-3">
-                <span className="block w-4 h-px bg-accent-secondary" />
-                <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
-                  Skills &amp; Technologies
-                </h4>
+            <div className="flex flex-col gap-5 p-5">
+              {/* Profile Photo - Place your image in the public folder (e.g., public/profile.jpg) and update the src below */}
+              <div className="w-full aspect-square rounded-2xl overflow-hidden border border-border-default bg-bg-card relative flex items-center justify-center group">
+                {/* Fallback placeholder */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-text-secondary">
+                  <span className="text-5xl">🧑‍💻</span>
+                  <span className="text-sm">Add photo in public/</span>
+                </div>
+                {/* Actual image */}
+                <img 
+                  src={photo} 
+                  alt="Arun CB" 
+                  className="w-full h-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => e.target.style.display = 'none'}
+                />
               </div>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 rounded-full text-sm font-medium border border-border-default bg-badge-bg text-badge-text transition-all duration-200 hover:-translate-y-0.5 cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
 
-            <div className="h-px bg-border-default" />
-
-            {/* Experience */}
-            <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-3">
-                <span className="block w-4 h-px bg-accent-secondary" />
-                <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
-                  Experience
-                </h4>
-              </div>
-              <div className="flex flex-col gap-6">
+              <div className="rounded-xl border border-border-default bg-bg-card px-5 py-4 flex flex-col gap-4">
                 {[
-                  { role: "Full-Stack Developer", company: "Freelance",   period: "2023 – Present" },
-                  { role: "Frontend Developer",   company: "Startup XYZ", period: "2022 – 2023" },
-                  { role: "React Intern",         company: "Agency ABC",  period: "2021 – 2022" },
-                ].map(({ role, company, period }) => (
-                  <div key={role} className="flex flex-col gap-0.5">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <span className="text-sm font-semibold text-text-primary">{role}</span>
-                      <span className="text-xs shrink-0 text-text-secondary">{period}</span>
-                    </div>
-                    <span className="text-xs text-text-secondary">{company}</span>
+                  { label: "Location",     value: "India" },
+                  { label: "Availability", value: "Open to work" },
+                  { label: "Focus",        value: "Full-Stack Dev" },
+                ].map(({ label, value }) => (
+                  <div key={label} className="flex justify-between items-center">
+                    <span className="text-xs uppercase tracking-widest font-medium text-text-secondary">
+                      {label}
+                    </span>
+                    <span className="text-sm font-medium text-text-primary">{value}</span>
                   </div>
                 ))}
+              </div>
+
+              {/* Resume Download - Place your CV in the public folder and update the href below */}
+              <a
+                href="/Arun_CV.pdf"
+                download="Arun_CB_CV.pdf"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-full border border-accent-primary bg-accent-primary text-text-on-accent text-sm font-semibold tracking-wide transition-all duration-200 hover:-translate-y-0.5 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download CV
+              </a>
+            </div>
+          </div>
+
+          {/* Bio & Skills (Card Theme) */}
+          <div className="flex flex-col gap-8 flex-1 lg:pl-4">
+
+            {/* Bio Card */}
+            <div
+              style={{
+                background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+                border: "1px solid #302E2A",
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+              }}
+              className="flex flex-col animate-fade-up delay-200"
+            >
+              {/* Window chrome */}
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "10px 14px", borderBottom: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}>
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+                <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace" }}>~/about-me</span>
+              </div>
+              <div className="p-6 md:p-8 flex flex-col gap-6">
+                <h3 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">Arun CB</h3>
+                <div className="flex flex-col gap-4">
+                  <p className="text-base md:text-lg leading-[1.8] max-w-2xl text-text-secondary">
+                    I'm a full-stack developer with a passion for building elegant,
+                    performant web applications. I enjoy turning complex problems into
+                    simple, intuitive interfaces that users genuinely love to use.
+                  </p>
+                  <p className="text-base md:text-lg leading-[1.8] max-w-2xl text-text-secondary">
+                    With experience spanning the entire web stack — from crafting
+                    responsive UIs to architecting scalable REST APIs — I bring
+                    ideas to life from concept to deployment. I'm always learning,
+                    always building, always improving.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Skills Card */}
+            <div
+              style={{
+                background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+                border: "1px solid #302E2A",
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+              }}
+              className="flex flex-col animate-fade-up delay-300"
+            >
+              {/* Window chrome */}
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "10px 14px", borderBottom: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}>
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+                <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace" }}>~/skills</span>
+              </div>
+              <div className="p-6 md:p-8 flex flex-col gap-6">
+                <div className="flex items-center gap-3">
+                  <span className="block w-4 h-px bg-accent-secondary" />
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
+                    Skills &amp; Technologies
+                  </h4>
+                </div>
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {skills.map((skill) => (
+                    <span
+                      key={skill}
+                      style={{ border: "1px solid #302E2A", background: "rgba(255,255,255,0.02)", color: "#BEB7A8" }}
+                      className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:text-[#E8DFC9] hover:border-[#E8DFC9] hover:bg-[rgba(255,255,255,0.05)] cursor-default shadow-sm"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
