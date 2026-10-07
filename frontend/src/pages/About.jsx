@@ -8,7 +8,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="px-6 py-20 md:py-28 bg-bg-main border-t border-border-default">
+    <section id="about" className="px-6 py-20 md:py-28 bg-transparent border-t border-border-default">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Page header */}
@@ -145,7 +145,7 @@ export default function About() {
                 <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
                 <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
                 <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
-                <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace" }}>~/about-me</span>
+                <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/about-me</span>
               </div>
               <div className="p-6 md:p-8 flex flex-col gap-6">
                 <h3 className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">Arun CB</h3>
@@ -181,7 +181,7 @@ export default function About() {
                 <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
                 <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
                 <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
-                <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace" }}>~/skills</span>
+                <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/skills</span>
               </div>
               <div className="p-6 md:p-8 flex flex-col gap-6">
                 <div className="flex items-center gap-3">

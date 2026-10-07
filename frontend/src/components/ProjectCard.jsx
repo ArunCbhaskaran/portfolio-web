@@ -2,7 +2,24 @@ export default function ProjectCard({ project }) {
   const { title, description, image, technologies, githubUrl, liveUrl } = project;
 
   return (
-    <div className="w-full rounded-2xl overflow-hidden border border-border-default bg-bg-card transition-all duration-300 hover:-translate-y-2 hover:border-border-accent cursor-default">
+    <div 
+      className="w-full flex flex-col transition-all duration-300 hover:-translate-y-2 cursor-default group"
+      style={{
+        background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+        border: "1px solid #302E2A",
+        borderRadius: "16px",
+        overflow: "hidden",
+        boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+      }}
+    >
+      {/* Window chrome */}
+      <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "10px 14px", borderBottom: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}>
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+        <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/{title.toLowerCase().replace(/\s+/g, '-')}</span>
+      </div>
+
       {image ? (
         <img
           src={image}
@@ -10,7 +27,7 @@ export default function ProjectCard({ project }) {
           className="w-full h-44 object-cover block border-b border-border-default"
         />
       ) : (
-        <div className="w-full h-44 flex items-center justify-center bg-bg-main border-b border-border-default text-text-secondary text-xs tracking-[0.15em] uppercase opacity-50">
+        <div className="w-full h-44 flex items-center justify-center bg-black/40 border-b border-[#302E2A] text-text-secondary text-xs tracking-[0.15em] uppercase opacity-50">
           No image yet
         </div>
       )}
@@ -25,7 +42,8 @@ export default function ProjectCard({ project }) {
             {technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-0.5 rounded-full text-[0.7rem] font-medium border border-border-default bg-badge-bg text-badge-text"
+                style={{ border: "1px solid #302E2A", background: "rgba(255,255,255,0.02)", color: "#BEB7A8" }}
+                className="px-2.5 py-0.5 rounded-full text-[0.7rem] font-medium transition-colors hover:text-[#E8DFC9] hover:border-[#E8DFC9]"
               >
                 {tech}
               </span>
@@ -34,7 +52,7 @@ export default function ProjectCard({ project }) {
         )}
 
         {(githubUrl || liveUrl) && (
-          <div className="flex gap-2 pt-3 border-t border-border-default">
+          <div className="flex gap-2 pt-3 border-t border-[#302E2A]">
             {githubUrl && (
               <a
                 href={githubUrl}

@@ -32,8 +32,8 @@ export default function Contact() {
   };
 
   const borderColor = (field) => {
-    if (!touched[field]) return "border-input-border";
-    return validate[field](form[field]) ? "border-error" : "border-border-accent";
+    if (!touched[field]) return "border-[#302E2A]";
+    return validate[field](form[field]) ? "border-error" : "border-[#302E2A]";
   };
 
   const Field = ({ label, name, type = "text", as: As = "input", rows }) => (
@@ -57,7 +57,7 @@ export default function Contact() {
           name === "email"   ? "you@example.com" :
                                "Write your message here…"
         }
-        className={`w-full rounded-lg border px-4 py-3 text-sm resize-none bg-input-bg text-text-primary outline-none transition-colors duration-200 ${borderColor(name)}`}
+        className={`w-full rounded-lg border px-4 py-3 text-sm resize-none bg-black/20 text-text-primary outline-none transition-colors duration-200 ${borderColor(name)} focus:border-accent-primary focus:bg-black/40`}
       />
       {touched[name] && validate[name](form[name]) && (
         <p className="text-xs text-error">{validate[name](form[name])}</p>
@@ -66,7 +66,7 @@ export default function Contact() {
   );
 
   return (
-    <section id="contact" className="px-6 py-20 md:py-28 bg-bg-main border-t border-border-default">
+    <section id="contact" className="px-6 py-20 md:py-28 bg-transparent border-t border-border-default">
       <div className="mx-auto max-w-6xl flex flex-col gap-14">
 
         {/* Page header */}
@@ -90,87 +90,141 @@ export default function Contact() {
         <div className="animate-fade-up delay-100 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
           {/* Sidebar */}
-          <aside className="flex flex-col gap-10 lg:w-64 flex-shrink-0">
-
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
-                Email
-              </span>
-              <a
-                href="mailto:you@example.com"
-                className="text-sm font-medium text-accent-secondary transition-colors duration-200 hover:text-text-primary underline underline-offset-4 decoration-border-default"
-              >
-                you@example.com
-              </a>
+          <aside 
+            className="flex flex-col lg:w-64 flex-shrink-0"
+            style={{
+              background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+              border: "1px solid #302E2A",
+              borderRadius: "16px",
+              overflow: "hidden",
+              boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+            }}
+          >
+            {/* Window chrome */}
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "10px 14px", borderBottom: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+              <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/connect</span>
             </div>
-
-            <div className="flex flex-col gap-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
-                Social
-              </span>
-              {[
-                { label: "GitHub",   url: "#" },
-                { label: "LinkedIn", url: "#" },
-                { label: "Twitter",  url: "#" },
-              ].map(({ label, url }) => (
+            
+            <div className="p-6 flex flex-col gap-10">
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
+                  Email
+                </span>
                 <a
-                  key={label}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary"
+                  href="mailto:you@example.com"
+                  className="text-sm font-medium text-accent-secondary transition-colors duration-200 hover:text-text-primary underline underline-offset-4 decoration-border-default"
                 >
-                  {label} →
+                  you@example.com
                 </a>
-              ))}
+              </div>
+  
+              <div className="flex flex-col gap-3">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary">
+                  Social
+                </span>
+                {[
+                  { label: "GitHub",   url: "#" },
+                  { label: "LinkedIn", url: "#" },
+                  { label: "Twitter",  url: "#" },
+                ].map(({ label, url }) => (
+                  <a
+                    key={label}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary"
+                  >
+                    {label} →
+                  </a>
+                ))}
+              </div>
+  
+              <div 
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full self-start"
+                style={{ border: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}
+              >
+                <span className="w-2 h-2 rounded-full bg-success" />
+                <span className="text-xs font-medium text-text-secondary">
+                  Available for work
+                </span>
+              </div>
             </div>
-
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-default bg-bg-card self-start">
-              <span className="w-2 h-2 rounded-full bg-success" />
-              <span className="text-xs font-medium text-text-secondary">
-                Available for work
-              </span>
-            </div>
-
           </aside>
 
           {/* Form / success */}
           <div className="flex-1">
             {submitted ? (
-              <div className="rounded-2xl p-10 text-center border border-border-default bg-bg-card flex flex-col items-center gap-5">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center text-2xl border border-border-default bg-bg-main">
-                  ✓
+              <div 
+                className="flex flex-col text-center"
+                style={{
+                  background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+                  border: "1px solid #302E2A",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+                }}
+              >
+                {/* Window chrome */}
+                <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "10px 14px", borderBottom: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}>
+                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+                  <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/contact-success</span>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-2xl font-bold text-text-primary">Message sent.</p>
-                  <p className="text-sm text-text-secondary">
-                    Thanks for reaching out — I'll get back to you soon.
-                  </p>
+                <div className="p-10 flex flex-col items-center gap-5">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-2xl border border-[#302E2A] bg-[rgba(255,255,255,0.02)]">
+                    ✓
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-2xl font-bold text-text-primary">Message sent.</p>
+                    <p className="text-sm text-text-secondary">
+                      Thanks for reaching out — I'll get back to you soon.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="px-7 py-2.5 rounded-full text-sm font-semibold border border-[#302E2A] text-text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:text-text-primary hover:border-text-primary bg-[rgba(255,255,255,0.02)]"
+                  >
+                    Send another message
+                  </button>
                 </div>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="px-7 py-2.5 rounded-full text-sm font-semibold border border-border-accent text-text-secondary transition-all duration-200 hover:-translate-y-0.5"
-                >
-                  Send another message
-                </button>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="flex flex-col gap-6 rounded-2xl p-8 border border-border-default bg-bg-card"
+                className="flex flex-col"
+                style={{
+                  background: "linear-gradient(145deg, #141412 0%, #1a1916 100%)",
+                  border: "1px solid #302E2A",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  boxShadow: "0 0 0 1px rgba(232,223,201,0.04), 0 24px 48px rgba(0,0,0,0.5)",
+                }}
               >
-                <Field label="Name"    name="name" />
-                <Field label="Email"   name="email" type="email" />
-                <Field label="Message" name="message" as="textarea" rows={5} />
-
-                <div className="pt-2 border-t border-border-default">
-                  <button
-                    type="submit"
-                    className="px-8 py-3 rounded-full font-semibold text-sm border border-accent-primary bg-accent-primary text-text-on-accent transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed"
-                  >
-                    Send Message →
-                  </button>
+                {/* Window chrome */}
+                <div style={{ display: "flex", alignItems: "center", gap: "6px", padding: "10px 14px", borderBottom: "1px solid #302E2A", background: "rgba(255,255,255,0.02)" }}>
+                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+                  <span style={{ flex: 1, textAlign: "center", fontSize: 11, color: "#5a564e", letterSpacing: "0.08em", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>~/contact-form</span>
+                </div>
+                <div className="p-8 flex flex-col gap-6">
+                  <Field label="Name"    name="name" />
+                  <Field label="Email"   name="email" type="email" />
+                  <Field label="Message" name="message" as="textarea" rows={5} />
+  
+                  <div className="pt-6 border-t border-[#302E2A] mt-2">
+                    <button
+                      type="submit"
+                      className="px-8 py-3 rounded-full font-semibold text-sm border border-accent-primary bg-accent-primary text-text-on-accent transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      Send Message →
+                    </button>
+                  </div>
                 </div>
               </form>
             )}

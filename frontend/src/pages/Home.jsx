@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center px-6 relative bg-bg-main"
+      className="min-h-screen flex flex-col justify-center px-6 relative bg-transparent overflow-hidden"
     >
-      <div className="absolute left-[calc(50%-1px)] top-0 bottom-0 hidden lg:block pointer-events-none w-px bg-border-default" />
-      <div className="absolute top-0 left-0 right-0 pointer-events-none h-px bg-border-default opacity-50" />
+      <div className="absolute left-[calc(50%-1px)] top-0 bottom-0 hidden lg:block pointer-events-none w-px bg-border-default z-0" />
+      <div className="absolute top-0 left-0 right-0 pointer-events-none h-px bg-border-default opacity-50 z-0" />
 
-      <div className="mx-auto max-w-6xl w-full pt-8 pb-20 md:pt-10 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="mx-auto max-w-6xl w-full pt-8 pb-20 md:pt-10 md:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
         {/* Hero text */}
         <div
           className="animate-fade-up"
@@ -71,6 +71,9 @@ export default function Home() {
                 color: "#5a564e",
                 letterSpacing: "0.08em",
                 fontFamily: "monospace",
+                overflow: "hidden", 
+                textOverflow: "ellipsis", 
+                whiteSpace: "nowrap"
               }}
             >
             </span>
